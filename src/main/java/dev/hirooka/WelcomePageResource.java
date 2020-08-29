@@ -17,7 +17,7 @@ public class WelcomePageResource {
         this.hatenaDriver = hatenaDriver;
     }
 
-    @Route(methods = HttpMethod.GET, path = "/")
+    @Route(methods = HttpMethod.GET, path = "/hatena/entries")
     Feed getEntries(RoutingExchange ex) throws Exception {
         return hatenaDriver.getAllPublishedEntries();
     }
