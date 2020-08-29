@@ -10,10 +10,13 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 @ApplicationScoped
-public class WelcomaPageResource {
+public class WelcomePageResource {
 
-    @Inject
-    HatenaDriver hatenaDriver;
+    private final HatenaDriver hatenaDriver;
+
+    public WelcomePageResource(HatenaDriver hatenaDriver) {
+        this.hatenaDriver = hatenaDriver;
+    }
 
     @Route(methods = HttpMethod.GET, path = "/")
     Feed getEntries(RoutingExchange ex) throws Exception {
