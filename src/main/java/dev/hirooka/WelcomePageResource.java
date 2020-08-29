@@ -7,7 +7,6 @@ import io.quarkus.vertx.web.RoutingExchange;
 import io.vertx.core.http.HttpMethod;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 
 @ApplicationScoped
 public class WelcomePageResource {
