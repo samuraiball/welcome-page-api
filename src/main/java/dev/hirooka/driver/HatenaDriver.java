@@ -6,7 +6,10 @@ import dev.hirooka.dto.Entry;
 import dev.hirooka.dto.Feed;
 import dev.hirooka.dto.Link;
 import dev.hirooka.dto.PageLink;
+import io.quarkus.cache.CacheInvalidate;
+import io.quarkus.cache.CacheResult;
 import okhttp3.*;
+import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.xml.bind.JAXB;
@@ -18,6 +21,9 @@ import java.util.stream.Collectors;
 @ApplicationScoped
 public class HatenaDriver {
 
+
+    static final Logger logger = Logger.getLogger(HatenaDriver.class);
+
     final OkHttpClient okHttpClient = new OkHttpClient();
 
     private final HatenaConfig hatenaConfig;
@@ -27,14 +33,20 @@ public class HatenaDriver {
     }
 
     // fixme: error handling
+    @CacheResult(cacheName = "hatena-entries")
     public Feed getAllPublishedEntries() throws Exception {
 
+        logger.info("url : " + hatenaConfig.apiEndpoint());
         List<Entry> entries =
                 getEntries(hatenaConfig.apiEndpoint())
                         .stream()
                         .filter(i -> i.getControl().getDraft().equals("no"))
                         .collect(Collectors.toList());
         return new Feed(entries);
+    }
+
+    @CacheInvalidate(cacheName = "hatena-entries")
+    public void getAppPublisherEntries() throws Exception {
     }
 
     private List<Entry> getEntries(String url) throws Exception {

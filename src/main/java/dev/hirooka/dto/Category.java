@@ -14,5 +14,4 @@ public class Category {
     public void setTerm(String term) {
         this.term = term;
     }
-
 }
