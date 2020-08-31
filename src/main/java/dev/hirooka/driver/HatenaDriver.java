@@ -4,7 +4,6 @@ package dev.hirooka.driver;
 import dev.hirooka.conifg.HatenaConfig;
 import dev.hirooka.dto.Entry;
 import dev.hirooka.dto.Feed;
-import dev.hirooka.dto.Link;
 import dev.hirooka.dto.PageLink;
 import io.quarkus.cache.CacheInvalidate;
 import io.quarkus.cache.CacheResult;

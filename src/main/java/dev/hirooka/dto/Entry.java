@@ -1,10 +1,15 @@
 package dev.hirooka.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import java.text.SimpleDateFormat;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -17,7 +22,6 @@ public class Entry {
     private String summary;
 
     private Link link;
-
 
     private List<Category> category;
 
@@ -86,4 +90,11 @@ public class Entry {
         this.title = title;
     }
 
+    @JsonProperty("published")
+    public String getFormatJSTDate() {
+        ZonedDateTime date = ZonedDateTime.parse(published, DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd E HH:mm:ss");
+        Date jstDate = Date.from(date.toInstant());
+        return df.format(jstDate);
+    }
 }
