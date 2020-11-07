@@ -1,10 +1,10 @@
-package dev.hirooka.driver;
+package dev.hirooka.infra;
 
 
 import dev.hirooka.conifg.HatenaConfig;
-import dev.hirooka.dto.Entry;
-import dev.hirooka.dto.Feed;
-import dev.hirooka.dto.PageLink;
+import dev.hirooka.infra.dto.Entry;
+import dev.hirooka.infra.dto.Feed;
+import dev.hirooka.infra.dto.PageLink;
 import io.quarkus.cache.CacheInvalidate;
 import io.quarkus.cache.CacheResult;
 import okhttp3.*;

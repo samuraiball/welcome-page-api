@@ -1,4 +1,4 @@
-package dev.hirooka.dto;
+package dev.hirooka.infra.dto;
 
 import javax.xml.bind.annotation.XmlAttribute;
 

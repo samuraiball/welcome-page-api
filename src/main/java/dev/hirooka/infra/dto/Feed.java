@@ -1,4 +1,4 @@
-package dev.hirooka.dto;
+package dev.hirooka.infra.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,6 +22,7 @@ public class Feed {
     public Feed(List<Entry> feed) {
         this.feed = feed;
     }
+
 
     public List<Entry> getFeed() {
         return feed;

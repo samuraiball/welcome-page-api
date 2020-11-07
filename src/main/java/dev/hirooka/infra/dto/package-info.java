@@ -3,7 +3,7 @@
         elementFormDefault = XmlNsForm.QUALIFIED
 )
 
-package dev.hirooka.dto;
+package dev.hirooka.infra.dto;
 
 import javax.xml.bind.annotation.XmlNsForm;
 import javax.xml.bind.annotation.XmlSchema;

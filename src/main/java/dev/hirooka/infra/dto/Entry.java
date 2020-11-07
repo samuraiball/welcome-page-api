@@ -1,4 +1,4 @@
-package dev.hirooka.dto;
+package dev.hirooka.infra.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,6 +14,19 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Entry {
+
+    public Entry() {
+    }
+
+    public Entry(String title, String published, String summary, Link link, List<Category> category, String edited, Control control) {
+        this.title = title;
+        this.published = published;
+        this.summary = summary;
+        this.link = link;
+        this.category = category;
+        this.edited = edited;
+        this.control = control;
+    }
 
     private String title;
 
@@ -32,6 +45,8 @@ public class Entry {
     @XmlElement(name = "control", namespace = "http://www.w3.org/2007/app")
     @JsonIgnore
     private Control control;
+
+
 
     public List<Category> getCategory() {
         return category;

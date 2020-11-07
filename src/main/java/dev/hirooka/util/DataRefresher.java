@@ -1,7 +1,7 @@
 package dev.hirooka.util;
 
 
-import dev.hirooka.driver.HatenaDriver;
+import dev.hirooka.infra.HatenaDriver;
 import io.quarkus.scheduler.Scheduled;
 import org.jboss.logging.Logger;
 
@@ -21,6 +21,7 @@ public class DataRefresher {
 
     @Scheduled(every = "1h")
     public void invalidateCache() throws Exception{
+        logger.info("reload blog data");
         hatenaDriver.getAppPublisherEntries();
         hatenaDriver.getAllPublishedEntries();
     }
